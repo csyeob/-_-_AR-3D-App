@@ -1,1 +1,5 @@
-# Hanium_project_3D-interior-App-with-ARcamera
+# 한이음 3D 인테리어 Application AR카메라 프로젝트
+## 상명대학교 스마트 정보통신 공학과
+### 최승엽, 장찬희, 안준영
+------------
+ 
