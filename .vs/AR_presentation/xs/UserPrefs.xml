@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{26E8080B-F4CF-A076-2B18-705D62FED152}|">
+  <MonoDevelop.Ide.ItemProperties.link PreferredExecutionTarget="90318448-9a07-47a3-9fb5-212453df202b" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StartProgram_aws.cs">
+    <Files>
+      <File FileName="Assets/Scripts/CustomUnityMainThreadDispatcher.cs" Line="163" Column="26" />
+      <File FileName="Assets/Scripts/StartProgram_aws.cs" Line="21" Column="3" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AR_presentation" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="CustomUnityMainThreadDispatcher.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.link.xml PreferredExecutionTarget="90318448-9a07-47a3-9fb5-212453df202b" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="90318448-9a07-47a3-9fb5-212453df202b" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
