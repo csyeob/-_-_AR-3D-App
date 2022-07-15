@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.25
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB9-8B4A-11D0-8D11-00A0C91BC942}") = "AWSSDK.CognitoSync", "AWSSDK.CognitoSync.dll", "{9DC36B46-D480-45B5-9D11-9B25B6059344}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DC36B46-D480-45B5-9D11-9B25B6059344}.Default|Any CPU.ActiveCfg = Default|Any CPU
+		{9DC36B46-D480-45B5-9D11-9B25B6059344}.Default|Any CPU.Build.0 = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9AFB2F1-CD56-4354-B7A7-2C7ADCFDEA08}
+	EndGlobalSection
+EndGlobal

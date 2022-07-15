@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{9E1CDB0D-C4D0-4FCE-A9DF-97FF673A7AD3}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AWSSDK.CognitoSync" expanded="True">
+            <Node name="AWSSDK.CognitoSync" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AWSSDK.CognitoSync PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
