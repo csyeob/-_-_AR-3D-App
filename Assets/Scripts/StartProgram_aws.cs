@@ -5,12 +5,16 @@ using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime.Internal;
+using UnityEngine.UI;
 
 public class StartProgram_aws : MonoBehaviour
 {
-    DynamoDBContext context;
-    AmazonDynamoDBClient DBclient;
-    CognitoAWSCredentials credentials;
+    public DynamoDBContext context;
+    public AmazonDynamoDBClient DBclient;
+    public  InputField Id;
+    public  InputField Pwd;
+
+
     void Awake()
     {
         UnityInitializer.AttachToGameObject(this.gameObject);
@@ -19,27 +23,27 @@ public class StartProgram_aws : MonoBehaviour
         CognitoAWSCredentials credentials = new CognitoAWSCredentials(
         "자신의 증명 풀 ID", // 자격 증명 풀 ID
         RegionEndpoint.APNortheast2 // 리전
-);
+        );
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(DBclient);
-        CreateCharacter();
-        FindItem();
-
-
     }
 
-    [DynamoDBTable("User_info")]
+   [DynamoDBTable("User_info")]
     public class Character
     {
         [DynamoDBHashKey] // Hash key.
         public string id { get; set; }
+        public string pwd { get; set; }
     }
 
-    private void CreateCharacter() //캐릭터 정보를 DB에 올리기
+    public void UploadDB() //캐릭터 정보를 DB에 올리기
     {
         Character c1 = new Character
         {
-            id = "happy"
+            id = Id.text,
+            pwd = Pwd.text,
+            //id = "test"
+          //  pwd = Pwd.text,
         };
         context.SaveAsync(c1, (result) =>
         {
@@ -50,7 +54,8 @@ public class StartProgram_aws : MonoBehaviour
                 Debug.Log(result.Exception);
         });
     }
-
+ 
+/*
     public void FindItem() //DB에서 캐릭터 정보 받기
     {
         Character c;
@@ -66,4 +71,5 @@ public class StartProgram_aws : MonoBehaviour
             //Debug.Log(c.pwd); //찾은 캐릭터 정보 중 아이템 정보 출력
         }, null);
     }
+*/
 }
