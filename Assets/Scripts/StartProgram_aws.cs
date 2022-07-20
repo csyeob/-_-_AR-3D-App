@@ -6,6 +6,8 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime.Internal;
 using UnityEngine.UI;
+using EasyUI.Toast;
+using System.Collections;
 
 public class StartProgram_aws : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class StartProgram_aws : MonoBehaviour
         //gameObject.AddComponent<CustomUnityMainThreadDispatcher>(); //얘때문에 1번 안하면 namespace 에러뜹니다.
         //AWSConfigs.HttpClient = AWSConfigs.HttpClientOption.UnityWebRequest;
         CognitoAWSCredentials credentials = new CognitoAWSCredentials(
-        "자신의 증명 풀 ID", // 자격 증명 풀 ID
+        "자신의 자격증명 풀 ID", // 자격 증명 풀 ID
         RegionEndpoint.APNortheast2 // 리전
         );
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
@@ -34,42 +36,41 @@ public class StartProgram_aws : MonoBehaviour
         [DynamoDBHashKey] // Hash key.
         public string id { get; set; }
         public string pwd { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
     }
 
-    public void UploadDB() //캐릭터 정보를 DB에 올리기
-    {
-        Character c1 = new Character
-        {
-            id = Id.text,
-            pwd = Pwd.text,
-            //id = "test"
-          //  pwd = Pwd.text,
-        };
-        context.SaveAsync(c1, (result) =>
-        {
-            //id가 happy, item이 1111인 캐릭터 정보를 DB에 저장
-            if (result.Exception == null)
-                Debug.Log("Success!");
-            else
-                Debug.Log(result.Exception);
-        });
-    }
- 
-/*
     public void FindItem() //DB에서 캐릭터 정보 받기
     {
         Character c;
-        context.LoadAsync<Character>("happy", (AmazonDynamoDBResult<Character> result) =>
+        context.LoadAsync<Character>(Id.text, (AmazonDynamoDBResult<Character> result) =>
         {
-            // id가 abcd인 캐릭터 정보를 DB에서 받아옴
-            if (result.Exception != null)
-            {
-                Debug.LogException(result.Exception);
-                return;
-            }
             c = result.Result;
+            if(c == null)
+            {
+                Toast.Show("아이디 비밀번호를 다시 입력해주세요.",2f,ToastColor.Red);
+            }
+            else
+            {
+                if(Pwd.text == c.pwd)
+                {
+                    Toast.Show("로그인 성공", 2f, ToastColor.Green);
+                    StartCoroutine(loadScene());
+                }
+                else
+                {
+                    Toast.Show("비밀번호를 확인해주세요", 2f, ToastColor.Red);
+                }
+            }
             //Debug.Log(c.pwd); //찾은 캐릭터 정보 중 아이템 정보 출력
         }, null);
     }
-*/
+    //TODO scene 전환 딜레이
+    IEnumerator loadScene()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("Main");
+    }
+
 }
