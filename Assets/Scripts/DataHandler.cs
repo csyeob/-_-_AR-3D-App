@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DataHandler : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class DataHandler : MonoBehaviour
     [SerializeField] private GameObject buttonContainer;
     [SerializeField] private List<Item> items;
     // 버튼에 대한 정보를 담고 있는 버튼메니저와 그 버튼들을 포함을 버튼컨테이너
-
     private int current_id = 0;
 
     private static DataHandler instance;
@@ -32,21 +32,22 @@ public class DataHandler : MonoBehaviour
         }
     }
     
-    private void Start()
+    public void Start()
     {
-        LoadItems();
-        CreateButton();
+        LoadItems("default");
     }
 
-    void LoadItems()
+    public void LoadItems(string furniture)
     {
-        var items_obj = Resources.LoadAll("Items", typeof(Item));
+        var items_obj = Resources.LoadAll(furniture, typeof(Item));
         foreach(var item in items_obj)
         {
             items.Add(item as Item);
         }
+        CreateButton();
+        
     }
-    void CreateButton()
+    public void CreateButton()
     {
         foreach (Item i in items)
         {
