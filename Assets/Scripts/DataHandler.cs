@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DataHandler : MonoBehaviour
 {
-    int i = 0;
     private GameObject furniture;
     // 가구를 저장하는 변수
     // 클래스 인스턴스를 생성할 것임.
@@ -13,7 +12,8 @@ public class DataHandler : MonoBehaviour
     [SerializeField]private ButtonManager buttonPrefab;
     [SerializeField] private GameObject buttonContainer;
     [SerializeField] private List<Item> items;
-    ButtonManager b;
+    [SerializeField] private Button btn1;
+    [SerializeField] private Button btn2;
     // 버튼에 대한 정보를 담고 있는 버튼메니저와 그 버튼들을 포함을 버튼컨테이너
     private int current_id = 0;
 
@@ -37,6 +37,8 @@ public class DataHandler : MonoBehaviour
     public void Start()
     {
        LoadCategoryItems("default");
+        btn1.onClick.AddListener(() => LoadCategoryItems("bed_item"));
+        btn2.onClick.AddListener(() => LoadCategoryItems("sofa_item"));
     }
 
     public void LoadItems(string furniture)
@@ -51,6 +53,7 @@ public class DataHandler : MonoBehaviour
     }
     public void LoadCategoryItems(string furniture)
     {
+        current_id = 0;
         DestroyButton();
         items.Clear();
         var items_obj = Resources.LoadAll(furniture, typeof(Item));
@@ -59,13 +62,13 @@ public class DataHandler : MonoBehaviour
             items.Add(item as Item);
         }
         CreateButton();
-
     }
     public void CreateButton()
     {
+        
         foreach (Item i in items)
         {
-            b = Instantiate(buttonPrefab, buttonContainer.transform);
+            ButtonManager b = Instantiate(buttonPrefab, buttonContainer.transform);
             // rawimage 애들이 다 버튼화로 하기 위함.
             b.ItemId = current_id;
             b.ButtonTexture = i.itemImage;
