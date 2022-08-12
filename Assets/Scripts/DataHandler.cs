@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DataHandler : MonoBehaviour
 {
+    int i = 0;
     private GameObject furniture;
     // 가구를 저장하는 변수
     // 클래스 인스턴스를 생성할 것임.
@@ -12,6 +13,7 @@ public class DataHandler : MonoBehaviour
     [SerializeField]private ButtonManager buttonPrefab;
     [SerializeField] private GameObject buttonContainer;
     [SerializeField] private List<Item> items;
+    ButtonManager b;
     // 버튼에 대한 정보를 담고 있는 버튼메니저와 그 버튼들을 포함을 버튼컨테이너
     private int current_id = 0;
 
@@ -34,7 +36,7 @@ public class DataHandler : MonoBehaviour
     
     public void Start()
     {
-        LoadItems("default");
+       LoadCategoryItems("default");
     }
 
     public void LoadItems(string furniture)
@@ -47,18 +49,36 @@ public class DataHandler : MonoBehaviour
         CreateButton();
         
     }
+    public void LoadCategoryItems(string furniture)
+    {
+        DestroyButton();
+        items.Clear();
+        var items_obj = Resources.LoadAll(furniture, typeof(Item));
+        foreach (var item in items_obj)
+        {
+            items.Add(item as Item);
+        }
+        CreateButton();
+
+    }
     public void CreateButton()
     {
         foreach (Item i in items)
         {
-            ButtonManager b = Instantiate(buttonPrefab, buttonContainer.transform);
+            b = Instantiate(buttonPrefab, buttonContainer.transform);
             // rawimage 애들이 다 버튼화로 하기 위함.
             b.ItemId = current_id;
             b.ButtonTexture = i.itemImage;
             current_id++;
         }
     }
-
+    public void DestroyButton()
+    {
+        foreach(Transform child in buttonContainer.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
     public void SetFurniture(int id)
     {
         // 목록에 있는 숫자를 버튼메니저에 넘겨줌.
