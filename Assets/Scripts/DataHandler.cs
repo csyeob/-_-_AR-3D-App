@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DataHandler : MonoBehaviour
 {
+    //TODO AR 기능들이 현재 안됨 수정해야댐 어디서 해야댈지 잘 모르겠음!
+
     private GameObject furniture;
     // 가구를 저장하는 변수
     // 클래스 인스턴스를 생성할 것임.
