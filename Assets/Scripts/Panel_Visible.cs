@@ -9,6 +9,7 @@ public class Panel_Visible : MonoBehaviour
     public GameObject hide;
     public GameObject look;
 
+    // panel 카테고리 패널 숨김 보이기 기능 
     public void visible_panel()
     {
         panel.SetActive(true);
