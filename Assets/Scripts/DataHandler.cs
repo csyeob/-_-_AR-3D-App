@@ -16,6 +16,7 @@ public class DataHandler : MonoBehaviour
     [SerializeField] private List<Item> items;
     [SerializeField] private Button btn1;
     [SerializeField] private Button btn2;
+    [SerializeField] private Button btn3;
     // 버튼에 대한 정보를 담고 있는 버튼메니저와 그 버튼들을 포함을 버튼컨테이너
     private int current_id = 0;
 
@@ -41,6 +42,7 @@ public class DataHandler : MonoBehaviour
        LoadCategoryItems("default");
         btn1.onClick.AddListener(() => LoadCategoryItems("bed_item"));
         btn2.onClick.AddListener(() => LoadCategoryItems("sofa_item"));
+        btn3.onClick.AddListener(() => LoadCategoryItems("chair_item"));
     }
 
     public void LoadItems(string furniture)
