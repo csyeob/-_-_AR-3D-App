@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3313b611095214dd9b4ec23a4f07d15a, type: 3}
   m_Name: chair2
   m_EditorClassIdentifier: 
-  price: 0
-  itemPrefab: {fileID: 0}
-  itemImage: {fileID: 0}
+  price: 2
+  itemPrefab: {fileID: 2385285576162096519, guid: 464b722dc43424ff8a7b740dbb4925e3, type: 3}
+  itemImage: {fileID: 21300000, guid: a262eb2c618d34ec59de787e2153cc5f, type: 3}
