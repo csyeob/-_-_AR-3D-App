@@ -15,13 +15,14 @@ public class WallManager : MonoBehaviour
    // float [] posY;
    // private int i = 0;
    // public GameObject wall;
-   public ARPlacementInteractable aRPlacementInteractable;
+    //public ARPlacementInteractable aRPlacementInteractable;
 
     public GameObject gameObjectToinstatiate;
     private GameObject spawnObject;
     private ARRaycastManager aRRaycastManager;
     private Vector2 touchPosition;
-    public int num = 0;
+    private int num = 0;
+    private string num_s;
     Pose[] hits_;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -42,21 +43,23 @@ public class WallManager : MonoBehaviour
 
     void Start()
     {
-       aRPlacementInteractable.objectPlaced.AddListener(drawWall);
+        num++;
+        num_s = num.ToString();
+        m_Text.text = num_s;
     }
-    public void drawWall(ARObjectPlacementEventArgs args)
+    void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        /* if (!TryGetTouchPosition(out Vector2 touchPosition))
         {
             return;
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
-            hits_[num] = hits[0].pose;
+           // hits_[num] = hits[0].pose;
 
 
-            if (num == 3 & spawnObject == null)
+            if (spawnObject == null)
             {
                 float x = hits[3].pose.position.x - hits[0].pose.position.x;
                 float z = hits[0].pose.position.z - hits[1].pose.position.z;
@@ -64,12 +67,23 @@ public class WallManager : MonoBehaviour
                 float aver_z = (hits[0].pose.position.z + hits[2].pose.position.z) / 2;
                 Vector3 local = new Vector3(x, 0, z);
                 spawnObject = Instantiate(gameObjectToinstatiate, hitPose.position, hitPose.rotation);
-                spawnObject.transform.localScale = local;
-
+               // spawnObject.transform.localScale = local;
             }
+        }*/
+    }
+    public void drawWall()
+    {
+
+        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        {
+            return;
         }
-        m_Text.text = num.ToString() + " ";
+        if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        {
+            hits_[num] = hits[0].pose;
+        }
         num++;
+        m_Text.text = num.ToString();
     }
    /* public void drawWall()
     {
