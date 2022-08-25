@@ -23,6 +23,8 @@ public class Wallmanager1 : MonoBehaviour
     [SerializeField] private Button btn2;
     public GameObject wall;
     Mesh mesh;
+    private int[] indices;
+
     //MeshRenderer mes;
     //public Material mater;
 
@@ -53,31 +55,51 @@ public class Wallmanager1 : MonoBehaviour
 
     public void Doit()
     {
-        CreateShape();
-        UpdateMesh();
+        DrawFilled(num);
     }
-    void CreateShape()
+
+    private int[] DrawFilledIndices(Vector3[] vertices)
     {
-        Debug.Log(point_p[1]);
-        vertices = new Vector3[]
+        int triangleCount = vertices.Length - 2;
+        List<int> indices = new List<int>();
+
+        for (int i = 0; i < triangleCount; ++i)
         {
-            new Vector3((float)point_p[0].x,(float)point_p[0].y,(float)point_p[0].z),
-            new Vector3((float)point_p[1].x,(float)point_p[1].y,(float)point_p[1].z),
-            new Vector3((float)point_p[2].x,(float)point_p[2].y,(float)point_p[2].z)
-        };
-        triangles = new int[]
-        {
-            0,1,2
-        };
+            indices.Add(0);
+            indices.Add(i + 2);
+            indices.Add(i + 1);
+        }
+
+        return indices.ToArray();
+    }
+    private void DrawFilled(int sides)
+    {
+        // 정점 정보
+        vertices = GetCircumferencePoints(sides);
+        // 정점을 잇는 폴리곤 정보
+        indices = DrawFilledIndices(vertices);
+        // 메시 생성
+        GeneratePolygon(vertices, indices);
         m_Text.text = "createshape 여기까지 돌아가긴함.";
+
     }
-    void UpdateMesh()
+    private Vector3[] GetCircumferencePoints(int sides)
     {
-        mesh.Clear();
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        m_Text.text = "update mesh 여기까지 돌아가긴함.";
+        Vector3[] points = new Vector3[sides];
+        for (int i = 0; i < sides; ++i)
+        {
+            points[i] = new Vector3((float)point_p[i].x,(float)point_p[i].y,(float)point_p[i].z);
+        }
+
+        return points;
     }
-
-
+    private void GeneratePolygon(Vector3[] vertices, int[] indices)
+    {
+        // 점, 반지름 정보에 따라 Update()에서
+        // 지속적으로 업데이트하기 떄문에 기존 mesh 정보를 초기화
+        mesh.Clear();
+        // 정점, 폴리곤, uv 설정
+        mesh.vertices = vertices;
+        mesh.triangles = indices;
+    }
 }
