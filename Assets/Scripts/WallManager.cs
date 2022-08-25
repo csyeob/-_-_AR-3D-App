@@ -43,47 +43,35 @@ public class WallManager : MonoBehaviour
 
     void Start()
     {
-        num++;
-        num_s = num.ToString();
-        m_Text.text = num_s;
+      
     }
     void Update()
     {
-        /* if (!TryGetTouchPosition(out Vector2 touchPosition))
-        {
-            return;
-        }
-        if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
-        {
-            var hitPose = hits[0].pose;
-           // hits_[num] = hits[0].pose;
-
-
-            if (spawnObject == null)
-            {
-                float x = hits[3].pose.position.x - hits[0].pose.position.x;
-                float z = hits[0].pose.position.z - hits[1].pose.position.z;
-                float aver_x = (hits[3].pose.position.x + hits[0].pose.position.x) / 2;
-                float aver_z = (hits[0].pose.position.z + hits[2].pose.position.z) / 2;
-                Vector3 local = new Vector3(x, 0, z);
-                spawnObject = Instantiate(gameObjectToinstatiate, hitPose.position, hitPose.rotation);
-               // spawnObject.transform.localScale = local;
-            }
-        }*/
-    }
-    public void drawWall()
-    {
-
         if (!TryGetTouchPosition(out Vector2 touchPosition))
         {
             return;
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
-            hits_[num] = hits[0].pose;
+            var hitPose = hits[0].pose;
+             //hits_[num] = hits[0].pose;
+          
+               // float x = hits[3].pose.position.x - hits[0].pose.position.x;
+               // float z = hits[0].pose.position.z - hits[1].pose.position.z; // y로 해야함
+               // float aver_x = (hits[3].pose.position.x + hits[0].pose.position.x) / 2;
+               // float aver_z = (hits[0].pose.position.z + hits[2].pose.position.z) / 2;
+               // Vector3 local = new Vector3(x, 0, z);
+                spawnObject = Instantiate(gameObjectToinstatiate, hitPose.position, hitPose.rotation);
+            // spawnObject.transform.localScale = local;
+            m_Text.text = spawnObject.transform.position + " ";
         }
+    }
+    public void drawWall()
+    {
         num++;
-        m_Text.text = num.ToString();
+        num_s = num.ToString();
+        m_Text.text = num_s;
+
     }
    /* public void drawWall()
     {
