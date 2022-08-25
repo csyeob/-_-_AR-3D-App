@@ -9,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 public class Wallmanager1 : MonoBehaviour
 {
 
-    Pose [] pose;
+    List<Vector3> point_p = new List<Vector3>();
     Pose p;
 
     private ARRaycastManager aRRaycastManager;
@@ -30,7 +30,10 @@ public class Wallmanager1 : MonoBehaviour
     public void madeWall()
     {
         p = WallHandler.Instance.GetPosition();
-        m_Text.text = num.ToString() + "\n" + p.position;
+        point_p.Add(p.position);
+        Debug.Log(point_p[num]);
+        Debug.Log(num);
+        m_Text.text = num.ToString() + "\n" + point_p[num];
         num++;
     }
 }
