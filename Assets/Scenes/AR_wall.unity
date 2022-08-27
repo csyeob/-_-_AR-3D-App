@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Text: {fileID: 1988955139}
   btn1: {fileID: 1492916019}
   btn2: {fileID: 573017588}
+  wall: {fileID: 0}
 --- !u!4 &905434639
 Transform:
   m_ObjectHideFlags: 0
@@ -606,7 +607,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd171b2da7d9b4dcb876681e3478dbe8, type: 2}
+  - {fileID: 2100000, guid: 8ac6926ebf14f4648a996874c6fc965d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
