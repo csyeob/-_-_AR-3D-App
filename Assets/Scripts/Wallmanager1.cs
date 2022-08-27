@@ -101,5 +101,6 @@ public class Wallmanager1 : MonoBehaviour
         // 정점, 폴리곤, uv 설정
         mesh.vertices = vertices;
         mesh.triangles = indices;
+       
     }
 }
