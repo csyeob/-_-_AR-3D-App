@@ -13,7 +13,7 @@ public class LineManager : MonoBehaviour
     LineRenderer line;
     public bool continuous;
     public TextMeshProUGUI buttonText;
-
+    public GameObject back;
     void Start()
     {
         aRPlacementInteractable.objectPlaced.AddListener(DrawLine);  
