@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class VR_capture : MonoBehaviour
 {
-    public GameObject parent_img;
-    GameObject r1;
+    public RawImage[] capture_vr;
     int i = 0;
     // Start is called before the first frame update
     void Start()
@@ -31,13 +30,11 @@ public class VR_capture : MonoBehaviour
         texture.Apply();
 
         string name = "Screenshot_EpicApp" + System.DateTime.Now.ToString("yyyy-mm-dd_HH-mm-ss") + "png";
-        GameObject r = Instantiate(parent_img, this.transform.position, Quaternion.identity);
+        //GameObject r = Instantiate(parent_img, this.transform.position, Quaternion.identity);
         Sprite r_sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        r.name = i.ToString();
-        r.AddComponent<RawImage>().texture = r_sprite.texture;
-        r.transform.parent = parent_img.transform;
+        capture_vr[i].name = i.ToString();
+        capture_vr[i].texture = r_sprite.texture;
         i++;
-
         //NativeGallery.SaveImageToGallery(texture, "Myapp pictures", name);
         //Destroy(texture);
         
@@ -54,7 +51,6 @@ public class VR_capture : MonoBehaviour
 
     public void TakeScreenShot()
     {
-        
         StartCoroutine("Screenshot");
     }
 }
