@@ -9,16 +9,23 @@ public class VR_capture : MonoBehaviour
 {
     //public RawImage[] capture_vr;
     public Material[] Panel_material;
+    public Material Skybox_VR;
+    public GameObject[] p;
+    public GameObject b;
+    public GameObject b1;
+    public GameObject m;
     int i = 0;
-    //public RectTransform rectT; // Assign the UI element which you wanna capture
+    public RawImage[] r_image;
+
+    public RectTransform rectT; // Assign the UI element which you wanna capture
     int width; // width of the object to capture
     int height; // height of the object to capture
-
     // Start is called before the first frame update
     void Start()
     {
-       // width = System.Convert.ToInt32(rectT.rect.width);
-       // height = System.Convert.ToInt32(rectT.rect.height);
+        width = System.Convert.ToInt32(rectT.rect.width);
+        height = System.Convert.ToInt32(rectT.rect.height);
+        m.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,27 +38,36 @@ public class VR_capture : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-
         texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         texture.Apply();
-        /*Vector2 temp = rectT.transform.position;
+
+        //string name = "Screenshot_EpicApp" + System.DateTime.Now.ToString("yyyy-mm-dd_HH-mm-ss") + "png";
+        Sprite r_sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        Panel_material[i].SetTexture("_MainTex", r_sprite.texture);
+        r_image[i].texture = r_sprite.texture;
+        i++;
+        /*for (int t = 0; t < p.Length; t++)
+        {
+            p[t].SetActive(true);
+        }*/
+        //b.SetActive(true);
+        //b1.SetActive(true);
+    }
+    private IEnumerator Final()
+    {
+        m.SetActive(true);
+        
+        yield return new WaitForEndOfFrame(); // it must be a coroutine 
+        Vector2 temp = rectT.transform.position;
         var startX = temp.x - width / 2;
         var startY = temp.y - height / 2;
 
-        Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
+        var tex = new Texture2D(width, height, TextureFormat.RGB24, false);
         tex.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
-        tex.Apply();*/
-
+        tex.Apply();
         string name = "Screenshot_EpicApp" + System.DateTime.Now.ToString("yyyy-mm-dd_HH-mm-ss") + "png";
-        //GameObject r = Instantiate(parent_img, this.transform.position, Quaternion.identity);
-        Sprite r_sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        //capture_vr[i].name = i.ToString();
-        //capture_vr[i].texture = r_sprite.texture;
-        Panel_material[i].SetTexture("_MainTex", r_sprite.texture);
-        i++;
-        //NativeGallery.SaveImageToGallery(texture, "Myapp pictures", name);
-        //Destroy(texture);
-        
+        Sprite r_sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        Skybox_VR.SetTexture("_MainTex", r_sprite.texture);
 
     }
     private bool IsPointerOverUIObject()
@@ -65,6 +81,16 @@ public class VR_capture : MonoBehaviour
 
     public void TakeScreenShot()
     {
+        /*for(int i = 0; i<p.Length; i++)
+        {
+            p[i].SetActive(false);
+        }*/
+        //b.SetActive(false);
+        //b1.SetActive(false);
         StartCoroutine("Screenshot");
+    }
+    public void FinishCaputre()
+    {
+        StartCoroutine("Final");
     }
 }
