@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class LineManager : MonoBehaviour
 {
     public LineRenderer lineRenderer;
@@ -13,22 +16,33 @@ public class LineManager : MonoBehaviour
     LineRenderer line;
     public bool continuous;
     public TextMeshProUGUI buttonText;
-    public GameObject back;
+    public GameObject btn;
+    public Sprite conti;
+    public Sprite discrete;
+    public string load_scene_name;
+    Image image;
+
     void Start()
     {
-        aRPlacementInteractable.objectPlaced.AddListener(DrawLine);  
+        aRPlacementInteractable.objectPlaced.AddListener(DrawLine);
+        image = btn.GetComponent<Image>();
     }
-
+    public void Reload()
+    {
+        SceneManager.LoadScene(load_scene_name);
+    }
     public void ToggleBetweenDiscreteAndContinuous()
     {
         continuous = !continuous;
         if (continuous)
         {
             buttonText.text = "Discrete";
+            image.sprite = discrete;
         }
         else
         {
             buttonText.text = "Continuous";
+            image.sprite = conti;
         }
     }
 
