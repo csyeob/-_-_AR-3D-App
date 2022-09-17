@@ -16,8 +16,9 @@ public class Wallmanager1 : MonoBehaviour
 
     List<Vector3> point_p = new List<Vector3>();
     Pose p;
+    Vector3 v;
+    Vector3 pos;
 
-    public Text m_Text;
     private int num;
     [SerializeField] private Button btn1;
     [SerializeField] private Button btn2;
@@ -34,7 +35,7 @@ public class Wallmanager1 : MonoBehaviour
         //mes.material = mater;   
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         meshFilter.mesh = mesh;
-
+        
     }
     void Start()
     {
@@ -49,7 +50,7 @@ public class Wallmanager1 : MonoBehaviour
         point_p.Add(p.position);
         Debug.Log(point_p[num]);
         Debug.Log(num);
-        m_Text.text = num.ToString() + "\n" + point_p[num];
+        //m_Text.text = num.ToString() + "\n" + point_p[num];
         num++;
     }
 
@@ -80,8 +81,9 @@ public class Wallmanager1 : MonoBehaviour
         indices = DrawFilledIndices(vertices);
         // 메시 생성
         GeneratePolygon(vertices, indices);
-        m_Text.text = "createshape 여기까지 돌아가긴함.";
-
+        ObjectPosition();
+        Instantiate(wall, wall.transform);
+        
     }
     private Vector3[] GetCircumferencePoints(int sides)
     {
@@ -101,6 +103,17 @@ public class Wallmanager1 : MonoBehaviour
         // 정점, 폴리곤, uv 설정
         mesh.vertices = vertices;
         mesh.triangles = indices;
-       
+        
     }
+
+    private Vector3 ObjectPosition()
+    {
+      for(int i = 0; i<vertices.Length; i++)
+        {
+            v += transform.TransformPoint(vertices[i]);
+        }
+        pos = v / vertices.Length;
+        return pos;
+    }
+
 }
