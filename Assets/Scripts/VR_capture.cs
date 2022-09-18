@@ -37,6 +37,7 @@ public class VR_capture : MonoBehaviour
     private IEnumerator Screenshot()
     {
         yield return new WaitForEndOfFrame();
+
         Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         texture.Apply();
@@ -46,12 +47,6 @@ public class VR_capture : MonoBehaviour
         Panel_material[i].SetTexture("_MainTex", r_sprite.texture);
         r_image[i].texture = r_sprite.texture;
         i++;
-        /*for (int t = 0; t < p.Length; t++)
-        {
-            p[t].SetActive(true);
-        }*/
-        //b.SetActive(true);
-        //b1.SetActive(true);
     }
     private IEnumerator Final()
     {
@@ -68,6 +63,8 @@ public class VR_capture : MonoBehaviour
         string name = "Screenshot_EpicApp" + System.DateTime.Now.ToString("yyyy-mm-dd_HH-mm-ss") + "png";
         Sprite r_sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         Skybox_VR.SetTexture("_MainTex", r_sprite.texture);
+        NativeGallery.SaveImageToGallery(tex, "Myapp pictures", name);
+
 
     }
     private bool IsPointerOverUIObject()
@@ -81,13 +78,7 @@ public class VR_capture : MonoBehaviour
 
     public void TakeScreenShot()
     {
-        /*for(int i = 0; i<p.Length; i++)
-        {
-            p[i].SetActive(false);
-        }*/
-        //b.SetActive(false);
-        //b1.SetActive(false);
-        StartCoroutine("Screenshot");
+         StartCoroutine("Screenshot");
     }
     public void FinishCaputre()
     {
