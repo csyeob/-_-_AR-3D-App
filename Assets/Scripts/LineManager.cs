@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LineManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class LineManager : MonoBehaviour
 
     void Start()
     {
+
         aRPlacementInteractable.objectPlaced.AddListener(DrawLine);
         image = btn.GetComponent<Image>();
     }
@@ -31,19 +33,21 @@ public class LineManager : MonoBehaviour
     {
         SceneManager.LoadScene(load_scene_name);
     }
+    
     public void ToggleBetweenDiscreteAndContinuous()
     {
-        continuous = !continuous;
-        if (continuous)
-        {
-            buttonText.text = "Discrete";
-            image.sprite = discrete;
-        }
-        else
-        {
-            buttonText.text = "Continuous";
-            image.sprite = conti;
-        }
+          continuous = !continuous;
+            if (continuous)
+            {
+                buttonText.text = "Discrete";
+                image.sprite = discrete;
+            }
+            else
+            {
+                buttonText.text = "Continuous";
+                image.sprite = conti;
+            }
+       
     }
 
     void DrawLine(ARObjectPlacementEventArgs args)
@@ -52,14 +56,15 @@ public class LineManager : MonoBehaviour
 
         if(pointCount < 2)
         {
-            line = Instantiate(lineRenderer);
-            line.positionCount = 1;
+          line = Instantiate(lineRenderer);
+          line.positionCount = 1;
+
         }
         else
         {
-            line.positionCount = pointCount;
-            if(!continuous)
-              pointCount = 0;
+           line.positionCount = pointCount;
+           if (!continuous)
+            pointCount = 0;
         }
 
         // 2. 라인렌더러 위치 설정
