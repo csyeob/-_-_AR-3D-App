@@ -871,6 +871,8 @@ MonoBehaviour:
   Panel: {fileID: 1985908069}
   marker: {fileID: 1727654389}
   inputmanager: {fileID: 2085609374}
+  side: {fileID: 642027022}
+  plane: {fileID: 1056228775}
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
@@ -7377,7 +7379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
