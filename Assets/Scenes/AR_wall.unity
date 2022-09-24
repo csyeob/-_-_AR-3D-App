@@ -901,7 +901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn1: {fileID: 1492916019}
   btn2: {fileID: 573017588}
-  wall: {fileID: 4963602731003006391, guid: 3aeed64a4683e466594704123ed0923c, type: 3}
+  m: {fileID: 2100000, guid: aba89f63a78fb4bf5a6c7dbcf4c53bfc, type: 2}
+  change: {fileID: 21300000, guid: 3c47abcf3fb3d12408efe3073b2e379f, type: 3}
 --- !u!4 &905434639
 Transform:
   m_ObjectHideFlags: 0
