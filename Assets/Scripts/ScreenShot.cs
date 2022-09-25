@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 public class ScreenShot : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class ScreenShot : MonoBehaviour
     public GameObject Panel;
     public GameObject marker;
     public GameObject inputmanager;
+    public GameObject side;
+    public ARPlaneManager plane;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +39,12 @@ public class ScreenShot : MonoBehaviour
 
         NativeGallery.SaveImageToGallery(texture, "Myapp pictures", name);
         Destroy(texture);
+        plane.enabled = true;
         UI.SetActive(true);
         Panel.SetActive(true);
         marker.SetActive(true);
         inputmanager.SetActive(true);
+        side.SetActive(true);
 
     }
     private bool IsPointerOverUIObject()
@@ -55,6 +62,9 @@ public class ScreenShot : MonoBehaviour
         Panel.SetActive(false);
         marker.SetActive(false);
         inputmanager.SetActive(false);
+        side.SetActive(false);
+        plane.enabled = false;
+        
         StartCoroutine("Screenshot");
     }
 }
