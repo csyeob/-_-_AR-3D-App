@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 223974228}
   - component: {fileID: 223974227}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Screenshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,6 +873,7 @@ MonoBehaviour:
   inputmanager: {fileID: 2085609374}
   side: {fileID: 642027022}
   plane: {fileID: 1056228775}
+  arplane: {fileID: 2442410641290355291, guid: 5cdb47055361b4a6cb07b500764873c6, type: 3}
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
