@@ -11,21 +11,11 @@ public class ScreenShot : MonoBehaviour
     public GameObject UI;
     public GameObject Panel;
     public GameObject marker;
-    public GameObject inputmanager;
     public GameObject side;
     public ARPlaneManager plane;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public ARPlane arplane;
+    public GameObject sidebutton;
+    public Material mat;
 
     private IEnumerator Screenshot()
     {
@@ -43,8 +33,9 @@ public class ScreenShot : MonoBehaviour
         UI.SetActive(true);
         Panel.SetActive(true);
         marker.SetActive(true);
-        inputmanager.SetActive(true);
         side.SetActive(true);
+        arplane.enabled = true;
+        sidebutton.SetActive(true);
 
     }
     private bool IsPointerOverUIObject()
@@ -58,13 +49,23 @@ public class ScreenShot : MonoBehaviour
 
     public void TakeScreenShot()
     {
-        UI.SetActive(false);
-        Panel.SetActive(false);
-        marker.SetActive(false);
-        inputmanager.SetActive(false);
-        side.SetActive(false);
-        plane.enabled = false;
-        
         StartCoroutine("Screenshot");
+    }
+    public void deleteUI()
+    {
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
+        {}
+        else
+        {
+            UI.SetActive(false);
+            Panel.SetActive(false);
+            marker.SetActive(false);
+            side.SetActive(false);
+            plane.enabled = false;
+            arplane.enabled = false;
+            sidebutton.SetActive(false);
+            TakeScreenShot();
+        }
+        
     }
 }
