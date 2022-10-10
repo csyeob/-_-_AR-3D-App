@@ -43,9 +43,9 @@ public class WallManager : MonoBehaviour
 
     void Start()
     {
-      
+        ex();
     }
-    void Update()
+    /*void Update()
     {
         if (!TryGetTouchPosition(out Vector2 touchPosition))
         {
@@ -57,7 +57,7 @@ public class WallManager : MonoBehaviour
              //hits_[num] = hits[0].pose;
           
                // float x = hits[3].pose.position.x - hits[0].pose.position.x;
-               // float z = hits[0].pose.position.z - hits[1].pose.position.z; // y로 해야함
+               // float z = hits[0].pose.position.z - hits[1].pose.position.z; // y로 해야
                // float aver_x = (hits[3].pose.position.x + hits[0].pose.position.x) / 2;
                // float aver_z = (hits[0].pose.position.z + hits[2].pose.position.z) / 2;
                // Vector3 local = new Vector3(x, 0, z);
@@ -65,7 +65,8 @@ public class WallManager : MonoBehaviour
             // spawnObject.transform.localScale = local;
             m_Text.text = spawnObject.transform.position + " ";
         }
-    }
+        
+    }*/
     public void drawWall()
     {
         num++;
@@ -73,26 +74,37 @@ public class WallManager : MonoBehaviour
         m_Text.text = num_s;
 
     }
-   /* public void drawWall()
+    /* public void drawWall()
+     {
+         if (Input.touchCount > 0)
+         {
+             Touch touch = Input.GetTouch(0);
+             //m_Text.text = "Touch Position : " + touch.position;
+             posX[i] = touch.position.x;
+             posY[i] = touch.position.y;
+             i++;
+             GameObject g = Instantiate(wall);
+             m_Text.text = i + "번째" + " " + posX[i] + " " + posY[i];
+         }
+         if (i == 3)
+         {
+             GameObject g = Instantiate(wall);
+             RectTransform rectTran = g.GetComponent<RectTransform>();
+             g.transform.position = new Vector3(posX[0], posY[0]);
+             rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, posX[4] - posX[0]);
+             rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, posY[0] - posY[1]);
+             i = 0;
+         }   
+     }*/
+
+    public void ex()
     {
-        if (Input.touchCount > 0)
+        if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
-            Touch touch = Input.GetTouch(0);
-            //m_Text.text = "Touch Position : " + touch.position;
-            posX[i] = touch.position.x;
-            posY[i] = touch.position.y;
-            i++;
-            GameObject g = Instantiate(wall);
-            m_Text.text = i + "번째" + " " + posX[i] + " " + posY[i];
+            var hitPose = hits[0].pose;
+            spawnObject = Instantiate(gameObjectToinstatiate, hitPose.position, hitPose.rotation);
+            m_Text.text = spawnObject.transform.position + " ";
         }
-        if (i == 3)
-        {
-            GameObject g = Instantiate(wall);
-            RectTransform rectTran = g.GetComponent<RectTransform>();
-            g.transform.position = new Vector3(posX[0], posY[0]);
-            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, posX[4] - posX[0]);
-            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, posY[0] - posY[1]);
-            i = 0;
-        }   
-    }*/
+    }
+
 }
