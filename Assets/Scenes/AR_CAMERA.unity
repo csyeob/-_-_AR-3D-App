@@ -870,10 +870,11 @@ MonoBehaviour:
   UI: {fileID: 40919614}
   Panel: {fileID: 1985908069}
   marker: {fileID: 1727654389}
-  inputmanager: {fileID: 2085609374}
   side: {fileID: 642027022}
   plane: {fileID: 1056228775}
   arplane: {fileID: 2442410641290355291, guid: 5cdb47055361b4a6cb07b500764873c6, type: 3}
+  sidebutton: {fileID: 1420263213}
+  mat: {fileID: 2100000, guid: 46e36650e678d461f8fe5a1469732d06, type: 2}
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
@@ -5661,7 +5662,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 223974227}
         m_TargetAssemblyTypeName: ScreenShot, Assembly-CSharp
-        m_MethodName: TakeScreenShot
+        m_MethodName: deleteUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
