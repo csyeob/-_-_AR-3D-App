@@ -61,7 +61,7 @@ public class InputManager : ARBaseGestureInteractable
     }
 
     protected override void OnEndManipulation(TapGesture gesture)
-    { // 객체 인스턴스를 생서하여 오브젝트를 띄우는 메소드
+    { // 객체 인스턴스를 생성하여 오브젝트(가구)를 띄우는 메소드
         if (gesture.isCanceled)
         {
             return;
