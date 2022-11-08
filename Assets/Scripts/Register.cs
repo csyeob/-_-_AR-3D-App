@@ -27,7 +27,7 @@ public class Register : MonoBehaviour
         //gameObject.AddComponent<CustomUnityMainThreadDispatcher>(); //얘때문에 1번 안하면 namespace 에러뜹니다.
         //AWSConfigs.HttpClient = AWSConfigs.HttpClientOption.UnityWebRequest;
         CognitoAWSCredentials credentials = new CognitoAWSCredentials(
-        "자신의 자격 증명 풀ID", // 자격 증명 풀 ID
+        "ap-northeast-2:5b72f951-3ef0-41e2-8365-2bb580395266", // 자격 증명 풀 ID
         RegionEndpoint.APNortheast2 // 리전
         );
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);

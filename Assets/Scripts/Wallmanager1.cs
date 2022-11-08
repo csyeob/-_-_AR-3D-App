@@ -22,12 +22,11 @@ public class Wallmanager1 : MonoBehaviour
     private int num;
     [SerializeField] private Button btn1;
     [SerializeField] private Button btn2;
-    public GameObject wall;
     Mesh mesh;
     private int[] indices;
 
-    //MeshRenderer mes;
-    //public Material mater;
+    public Material m;
+    public Sprite change;
 
     private void Awake()
     {
@@ -57,6 +56,7 @@ public class Wallmanager1 : MonoBehaviour
     public void Doit()
     {
         DrawFilled(num);
+        m.SetTexture("_MainTex", change.texture);
     }
 
     private int[] DrawFilledIndices(Vector3[] vertices)
@@ -81,9 +81,7 @@ public class Wallmanager1 : MonoBehaviour
         indices = DrawFilledIndices(vertices);
         // 메시 생성
         GeneratePolygon(vertices, indices);
-        ObjectPosition();
-        Instantiate(wall, wall.transform);
-        
+
     }
     private Vector3[] GetCircumferencePoints(int sides)
     {
@@ -104,16 +102,6 @@ public class Wallmanager1 : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = indices;
         
-    }
-
-    private Vector3 ObjectPosition()
-    {
-      for(int i = 0; i<vertices.Length; i++)
-        {
-            v += transform.TransformPoint(vertices[i]);
-        }
-        pos = v / vertices.Length;
-        return pos;
     }
 
 }

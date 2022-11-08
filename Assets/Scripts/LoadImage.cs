@@ -32,7 +32,7 @@ public class LoadImage : MonoBehaviour
     IEnumerator loadImage(string path)
     {
         yield return null;
-        byte[] fileData = File.ReadAllBytes(path);
+        byte[] fileData  = File.ReadAllBytes(path);
         string filename = Path.GetFileName(path).Split('.')[0];
         string savePath = Application.persistentDataPath + "/Image";
         //경로를 확인하고 싶으면 Debug.log()안에 path 넣어보셈
@@ -68,4 +68,5 @@ public class LoadImage : MonoBehaviour
         }
     }
 
+    
 }
