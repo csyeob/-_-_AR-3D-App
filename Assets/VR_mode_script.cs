@@ -23,5 +23,5 @@ public class VR_mode_script : MonoBehaviour
     }
 
 
-
+  
 }
