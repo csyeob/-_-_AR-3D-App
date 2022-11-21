@@ -54,5 +54,5 @@ Professor: Choi Ju-hee (Sangmyung University), Mentor: Kim Jong-feel (Virnect)
 [![Video Label](https://user-images.githubusercontent.com/50544455/203085912-3206fb46-b44b-42af-9000-b7a8622848e3.PNG)](https://youtu.be/7Nwn2DUmdo0)
 
 
-
+ㄴㅇ
 
