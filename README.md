@@ -48,8 +48,10 @@ Professor: Choi Ju-hee (Sangmyung University), Mentor: Kim Jong-feel (Virnect)
 * ## 서비스 구성 (Service Configuration)
 <p align="center"><img src="https://user-images.githubusercontent.com/50544455/203076833-3a63922e-937c-45c9-bd34-3ae5df2dc624.png" width="700" height="370"></p>
 
+* ## 시상 내역(교내, 교외)
+
 * ## 작품 시연영상 (Demo)
-<iframe width="974" height="548" src="https://www.youtube.com/embed/7Nwn2DUmdo0" title="[2022 한이음 공모전] AR카메라를 활용한 3D 인테리어 App" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Video Label](https://user-images.githubusercontent.com/50544455/203085912-3206fb46-b44b-42af-9000-b7a8622848e3.PNG)](https://youtu.be/7Nwn2DUmdo0)
 
 
 
