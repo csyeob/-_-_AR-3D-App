@@ -49,8 +49,8 @@ Professor: Choi Ju-hee (Sangmyung University), Mentor: Kim Jong-feel (Virnect)
 <p align="center"><img src="https://user-images.githubusercontent.com/50544455/203076833-3a63922e-937c-45c9-bd34-3ae5df2dc624.png" alt="상명 피어오름 페스티벌 3등" width="700" height="370"></p>
 
 ## 시상 내역(교내, 공모전)
-- 상명 22-1 PRIME 소모임 성과발표회 (피어오름 페스티벌 3등)
-- 2022년 한이음 ICT 공모전 입선
+- 상명 22-1 PRIME 소모임 성과발표회 (피어오름 페스티벌 3등 수상)
+- 2022년 한이음 ICT 공모전 입선 수상
 <p align="center"><img src="https://user-images.githubusercontent.com/50544455/203086797-2a156bd2-e818-403f-9ea0-57c81d6e3e8d.png" width="350" height="550">
 <img src="https://user-images.githubusercontent.com/50544455/203086915-adccf647-5e1f-46ca-89d3-b951daee6dfd.png" width="350" height="500"></p>
 
